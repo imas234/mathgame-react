@@ -1,0 +1,21 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+.bottom{
+  position: absolute;
+  bottom: 10em;
+}
+
+.exp{
+  margin: 1em 1em;
+}
+
+.option{
+  margin: 1em 1em;
+  height: 2em;
+  width: 6em;
+}

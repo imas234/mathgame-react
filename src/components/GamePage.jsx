@@ -1,39 +1,36 @@
 import React, {useState, useEffect, useRef} from 'react';
+import Timer from './gamepage/Timer';
+import Expression from './gamepage/Expression';
+import Options from './gamepage/Options';
 
 
 function GamePage(props) {
-    const DEFAULT_TIME = 60;
-    const [seconds, setSeconds] = useState(DEFAULT_TIME);
-    const timerID = useRef();
+    const [mathOp, setMathOp] = useState("+");
+    const [exp, setExp] = useState([]);
 
-    useEffect(()=>{
-        tick();
+    const generateExpression = () => {
+        setExp([getNum(10), mathOp, getNum(10)]);
+    };
 
-        return clearTimeout(timerID.current);
-    }, []);
-
-    useEffect(()=>{
-        clearTimeout(timerID.current);
-        tick();
-    }, [seconds]);
-
-    const tick = () => {
-        if(seconds === 0) return;
-        timerID.current = setTimeout(()=>{
-            setSeconds(seconds - 1);            
-        }, 1000);
+    const getNum = (max) => {
+        let n = Math.floor(Math.random() * max);
+        while(n === 0) n = Math.floor(Math.random() * max);
+        return n;
     }
 
-    const reset = () => {
-        // resets timer
-        clearTimeout(timerID.current);
-        setSeconds(DEFAULT_TIME);
-    }; 
+    useEffect(() => {
+        generateExpression();
+    }, []);
+
+    const handleReset = () => {
+        generateExpression();
+    };
 
     return (
-        <div>
-            <p>{seconds}</p>
-            <button onClick={reset}>Reset</button>
+        <div className="container">
+            <Timer onReset={handleReset}/>
+            <Expression exp={exp} />
+            <Options exp={exp} answer={generateExpression} random={getNum}/>
         </div>
     );
 }
