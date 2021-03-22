@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 
 function Timer({onReset, setTimeOver}) {
-    const DEFAULT_TIME = 10;
+    const DEFAULT_TIME = 30;
     const [seconds, setSeconds] = useState(DEFAULT_TIME);
     const timerID = useRef();
 
@@ -36,7 +36,7 @@ function Timer({onReset, setTimeOver}) {
     return (
         <React.Fragment>
             <div>
-                <p className="timer">{seconds === 0 ? "-" : seconds}</p>
+                <p className="timer">{seconds === 0 ? "" : seconds}</p>
             </div>
             <div className="bottom">
                 <button className={"reset"} onClick={reset}>{seconds === 0 ? "Play Again" : "Reset"}</button>

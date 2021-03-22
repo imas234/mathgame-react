@@ -40,7 +40,7 @@ button{
 }
 
 .points-container{
-  margin-top: 4em;
+  margin-top: 3em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -51,6 +51,15 @@ button{
   color: #EF5818;
   font-family: 'Orbitron', sans-serif;
   font-size: 2em;
+}
+
+.high-score{
+  font-family: 'Orbitron', sans-serif;
+}
+
+.highlight-score{
+  color: #EF5818;
+  margin-left: 1em;
 }
 
 .points-text{
