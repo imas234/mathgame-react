@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 
-function Timer({onReset}) {
+function Timer({onReset, setTimeOver}) {
     const DEFAULT_TIME = 10;
     const [seconds, setSeconds] = useState(DEFAULT_TIME);
     const timerID = useRef();
@@ -11,6 +11,7 @@ function Timer({onReset}) {
     }, []);
 
     useEffect(()=>{
+        if(seconds === 0) setTimeOver(true);
         clearTimeout(timerID.current);
         tick();
     }, [seconds]);
@@ -20,7 +21,7 @@ function Timer({onReset}) {
         timerID.current = setTimeout(()=>{
             setSeconds(seconds - 1);            
         }, 1000);
-    }
+    };
 
     const reset = () => {
         // testing onReset
@@ -30,15 +31,15 @@ function Timer({onReset}) {
         clearTimeout(timerID.current);
         setSeconds(DEFAULT_TIME);
         tick();       
-    }; 
+    };
 
     return (
         <React.Fragment>
             <div>
-                <p>{seconds}</p>
+                <p className="timer">{seconds === 0 ? "-" : seconds}</p>
             </div>
             <div className="bottom">
-                <button onClick={reset}>{seconds === 0 ? "Play Again" : "Reset"}</button>
+                <button className={"reset"} onClick={reset}>{seconds === 0 ? "Play Again" : "Reset"}</button>
             </div>
         </React.Fragment>
     );

@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Expression({exp}) {
+const Expression = ({exp}) => {
     return (
-        <div>
+        <div className="exp-container">
             {exp.map((x, index) => <span className="exp" key={index}>{x}</span>) }
         </div>
     );
