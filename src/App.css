@@ -23,6 +23,16 @@ button{
   cursor: pointer;
 }
 
+button:focus{
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:active{
+  background-color: #665c80;
+  -webkit-tap-highlight-color: transparent;
+}
+
 .container{
   height: 90vh;
   width: 90vw;
@@ -32,11 +42,17 @@ button{
 }
 
 .exp-container{
+  width: 20em;
+  display: flex;
+  justify-content: space-between;
   margin-top: 4em;
 }
 
 .options-container{
-  margin-top: 1em;
+  width: 20em;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3em;
 }
 
 .points-container{
@@ -79,7 +95,6 @@ button{
 
 .exp{
   font-size: 3em;
-  margin: 1em 1em;
 }
 
 .option{
@@ -89,7 +104,6 @@ button{
   border-width: 0.2em;
   font-size: 1.5em;
   width: 3em;
-  margin: 1em 1em;
   padding: 0.25em
 }
 
